@@ -1,0 +1,5 @@
+{
+  "name": "@UI-lib/tokens",
+  "version": "0.0.0",
+  "scripts": { "build": "node -e \"console.log('building tokens')\"" }
+}
