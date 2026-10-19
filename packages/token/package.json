@@ -1,5 +1,17 @@
 {
   "name": "@UI-lib/tokens",
   "version": "0.0.0",
-  "scripts": { "build": "node -e \"console.log('building tokens')\"" }
+   "type": "module",
+  "files": ["dist"],
+  "exports": {
+    "./light.css": "./dist/light.css",
+    "./dark.css": "./dist/dark.css"
+  },
+  "scripts": {
+    "build": "node build.mjs"
+  },
+
+  "devDependencies": {
+    "style-dictionary": "^5.7.0"
+  }
 }
