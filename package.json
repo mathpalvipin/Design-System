@@ -23,7 +23,7 @@
   "packageManager": "pnpm@12.14.0",
   "type": "module",
   "devDependencies": {
-    "pettier": "^1.1.0",
+    "prettier": "^3.9.10",
     "turbo": "^2.11.9",
     "typescript": "^7.0.2"
   }
