@@ -16,8 +16,7 @@
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsup && tsc --emitDeclarationOnly --declaration --outDir dist --rootDir src",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

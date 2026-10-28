@@ -2,6 +2,23 @@
   "name": "docs",
   "private": true,
   "version": "0.0.0",
-  "scripts": { "build": "node -e \"console.log('building docs')\"" },
-  "dependencies": { "@UI-lib/ui": "workspace:*" }
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@UI-lib/tokens": "workspace:*",
+    "@UI-lib/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.3",
+    "@storybook/react-vite": "^10.6.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "storybook": "^10.6.3",
+    "vite": "^8.3.5"
+  }
 }
