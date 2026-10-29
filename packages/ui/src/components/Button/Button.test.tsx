@@ -1,9 +1,9 @@
 import { createRef } from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Button } from './Button';
-import { getA11yViolations } from '../../test/axe';
+import { userEvent } from '@testing-library/user-event';
+import { Button } from './Button.js';
+import { getA11yViolations } from '../../test/axe.js';
 
 describe('Button', () => {
   it('renders with an accessible name', () => {

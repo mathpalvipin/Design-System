@@ -1,5 +1,5 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
-import { cx } from '../../utils/cx';
+import { cx } from '../../utils/cx.js';
 import "./Button.css";
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
