@@ -1,7 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
 import "@UI-lib/tokens/light.css";
 import "@UI-lib/tokens/dark.css";
-import "@UI-lib/ui/styles.css";
 
 const preview: Preview = {
   globalTypes: {
