@@ -2,7 +2,7 @@ name: Test
 
 on:
   push:
-    branches: [ci/test-workflow]
+    branches: [master]
   workflow_dispatch:
 
 concurrency:
