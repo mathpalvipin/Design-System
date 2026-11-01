@@ -29,3 +29,25 @@ jobs:
       - run: pnpm lint
       - run: pnpm test
       - run: pnpm --filter @UI-lib/ui check:package
+
+      # only on master pushes: package the built Storybook for Pages
+      - name: Upload Storybook
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: apps/docs/storybook-static
+
+  deploy-storybook:
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
