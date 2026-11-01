@@ -1,0 +1,94 @@
+.ui-checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-2);
+  row-gap: var(--space-1);
+  align-items: center;
+  font-family: var(--font-family-sans);
+}
+
+/* the box: real input, custom look */
+.ui-checkbox__input {
+  appearance: none;
+  margin: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: grid;
+  place-content: center;
+  background: var(--color-bg-default);
+  border: 1.5px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+/* the mark, hidden until checked */
+.ui-checkbox__input::before {
+  content: '';
+  width: 0.625rem;
+  height: 0.625rem;
+  background: var(--color-text-inverse);
+  transform: scale(0);
+  transition: transform 120ms ease;
+  /* checkmark shape */
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.ui-checkbox__input:checked,
+.ui-checkbox__input:indeterminate {
+  background: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+}
+
+.ui-checkbox__input:checked::before {
+  transform: scale(1);
+}
+
+/* indeterminate: a horizontal bar instead of a check */
+.ui-checkbox__input:indeterminate::before {
+  transform: scale(1);
+  height: 0.125rem;
+  clip-path: none;
+}
+
+.ui-checkbox__input:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.ui-checkbox__label {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+}
+
+/* hint and error sit under the label, not under the box */
+.ui-checkbox__hint,
+.ui-checkbox__error {
+  grid-column: 2;
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+.ui-checkbox__hint { color: var(--color-text-secondary); }
+.ui-checkbox__error { color: var(--color-action-danger); }
+
+.ui-checkbox--invalid .ui-checkbox__input {
+  border-color: var(--color-action-danger);
+}
+
+.ui-checkbox--disabled .ui-checkbox__input,
+.ui-checkbox--disabled .ui-checkbox__label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-checkbox__input,
+  .ui-checkbox__input::before { transition: none; }
+}
+
+/* Windows High Contrast: let the OS draw a native checkbox */
+@media (forced-colors: active) {
+  .ui-checkbox__input { appearance: auto; }
+  .ui-checkbox__input::before { display: none; }
+}
