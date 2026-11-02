@@ -1,0 +1,89 @@
+.ui-switch {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+  align-items: center;
+  font-family: var(--font-family-sans);
+}
+
+/* track */
+.ui-switch__input {
+  --thumb-size: 1rem;
+  --track-padding: 0.125rem;
+  --travel: calc(2.25rem - var(--thumb-size) - var(--track-padding) * 2 - 2px);
+
+  appearance: none;
+  margin: 0;
+  width: 2.25rem;
+  height: 1.25rem;
+  padding: var(--track-padding);
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+/* thumb */
+.ui-switch__input::before {
+  content: '';
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-default);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  transition: transform 150ms ease;
+}
+
+.ui-switch__input:checked {
+  background: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+}
+
+/* move the thumb to the "on" side */
+.ui-switch__input:checked::before {
+  transform: translateX(var(--travel));
+}
+
+/* right-to-left: "on" is on the left */
+.ui-switch__input:dir(rtl):checked::before {
+  transform: translateX(calc(var(--travel) * -1));
+}
+
+.ui-switch__input:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.ui-switch__label {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+}
+
+.ui-switch__hint {
+  grid-column: 2;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.ui-switch--disabled .ui-switch__input,
+.ui-switch--disabled .ui-switch__label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-switch__input,
+  .ui-switch__input::before { transition: none; }
+}
+
+/* High Contrast: give the thumb a visible outline color */
+@media (forced-colors: active) {
+  .ui-switch__input::before { background: CanvasText; }
+  .ui-switch__input:checked { background: Highlight; }
+}
